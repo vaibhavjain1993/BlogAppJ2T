@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="15508" systemVersion="19A583" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="MediaDetail" representedClassName="MediaDetail" syncable="YES" codeGenerationType="class">
+        <attribute name="blogId" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="url" optional="YES" attributeType="String"/>
+        <relationship name="parentTreeMedia" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ParentTree" inverseName="mediaDetail" inverseEntity="ParentTree"/>
+    </entity>
+    <entity name="ParentTree" representedClassName="ParentTree" syncable="YES" codeGenerationType="class">
+        <attribute name="comments" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="content" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="likes" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="mediaDetail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MediaDetail" inverseName="parentTreeMedia" inverseEntity="MediaDetail"/>
+        <relationship name="users" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="User" inverseName="parentTree" inverseEntity="User"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="about" optional="YES" attributeType="String"/>
+        <attribute name="avatar" optional="YES" attributeType="String"/>
+        <attribute name="blogId" optional="YES" attributeType="String"/>
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="createdAt" optional="YES" attributeType="String"/>
+        <attribute name="designation" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="lastname" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="parentTree" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ParentTree" inverseName="users" inverseEntity="ParentTree"/>
+    </entity>
+    <elements>
+        <element name="MediaDetail" positionX="-65.95703125" positionY="-113.1484375" width="128" height="148"/>
+        <element name="ParentTree" positionX="-242.11328125" positionY="-10.8046875" width="123.890625" height="148"/>
+        <element name="User" positionX="-65.7734375" positionY="103.30078125" width="128" height="193"/>
+    </elements>
+</model>
